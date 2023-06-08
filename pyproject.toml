@@ -1,0 +1,74 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "ellar_django"
+
+
+[project]
+name = "ellar-django-module"
+authors = [
+   {name = "Ezeudoh Tochukwu", email = "tochukwu.ezeudoh@gmail.com"},
+]
+dynamic = ["version", "description"]
+requires-python = ">=3.7"
+readme = "README.md"
+home-page = "https://github.com/eadwinCode/ellar-django-module"
+classifiers = [
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Topic :: Internet",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development",
+    "Typing :: Typed",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Framework :: Django",
+    "Framework :: Django :: 3.0",
+    "Framework :: Django :: 3.1",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: AsyncIO",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+dependencies = [
+    "ellar-cli >= 0.1.8",
+    "Django >= 3.0",
+]
+
+
+[project.urls]
+Documentation = "https://github.com/eadwinCode/ellar-django-module"
+Source = "https://github.com/eadwinCode/ellar-django-module"
+Homepage = "https://eadwincode.github.io/ellar-django-module/"
+
+[project.optional-dependencies]
+test = [
+    "pytest >= 7.1.3,<8.0.0",
+    "pytest-django",
+    "pytest-cov >= 2.12.0,<5.0.0",
+    "mypy == 0.971",
+    "flake8 >= 3.8.3,<7.0.0",
+    "black == 22.8.0",
+    "isort >= 5.0.6,<6.0.0",
+    "pytest-asyncio",
+    "autoflake",
+]
+dev = [
+    "pre-commit"
+]
