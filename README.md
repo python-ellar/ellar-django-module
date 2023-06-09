@@ -178,7 +178,7 @@ Running migrations:
 ### Start Server
 Now, that we have everything setup, we can start the server
 ```shell
-ellar runserver
+ellar runserver --reload
 ```
 In the above example, we added `/-django-example` as path prefix. This is important because we need to group all django admin views 
 with a prefix and also to avoid unnecessary `Page Not Found` errors.
