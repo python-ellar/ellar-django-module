@@ -27,4 +27,4 @@ class DjangoModule(IModuleSetup):
         mount = Mount(
             path_prefix, routes=[_router, Mount("/", app=get_asgi_application())]
         )
-        return DynamicModule(cls, routers=[mount], commands=[django_command_wrapper])
+        return DynamicModule(cls, routers=[mount], commands=[django_command_wrapper])  # type: ignore
