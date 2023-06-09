@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#" target="blank"><img src="docs/img/EllarLogoIconOnly.png" width="200" alt="Ellar Logo" /></a>
+  <a href="#" target="blank"><img src="https://github.com/eadwinCode/ellar/blob/main/docs/img/EllarLogoB.png" width="200" alt="Ellar Logo" /></a>
 </p>
 
 A simple way to add use Django ORM with Ellar
