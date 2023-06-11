@@ -3,6 +3,7 @@
 </p>
 
 A simple way to add use Django ORM with Ellar
+
 ![Test](https://github.com/eadwinCode/ellar-django-module/actions/workflows/test_full.yml/badge.svg)
 ![Coverage](https://img.shields.io/codecov/c/github/eadwinCode/ellar-django-module)
 [![PyPI version](https://badge.fury.io/py/ellar-django-module.svg)](https://badge.fury.io/py/ellar-django-module)
