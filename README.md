@@ -2,7 +2,7 @@
   <a href="#" target="blank"><img src="https://github.com/eadwinCode/ellar/blob/main/docs/img/EllarLogoB.png" width="200" alt="Ellar Logo" /></a>
 </p>
 
-A simple way to add use Django ORM with Ellar
+A simple way to use Django ORM with Ellar
 
 ![Test](https://github.com/eadwinCode/ellar-django-module/actions/workflows/test_full.yml/badge.svg)
 ![Coverage](https://img.shields.io/codecov/c/github/eadwinCode/ellar-django-module)
