@@ -11,11 +11,11 @@ class TestEventController:
     def test_create_event_works(self, client):
         response = client.post(
             "/event/",
-            json=dict(
-                title="TestEvent1Title",
-                start_date=str(datetime.now().date()),
-                end_date=str((datetime.now() + timedelta(days=5)).date()),
-            ),
+            json={
+                "title": "TestEvent1Title",
+                "start_date": str(datetime.now().date()),
+                "end_date": str((datetime.now() + timedelta(days=5)).date()),
+            },
         )
         assert response.status_code == 201
         data = response.json()
