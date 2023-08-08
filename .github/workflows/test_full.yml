@@ -42,9 +42,7 @@ jobs:
         run: flit install --symlink
       - name: Black
         run: black --check ellar_django tests
-      - name: isort
-        run: isort --check ellar_django tests
-      - name: Flake8
-        run: flake8 ellar_django tests
+      - name: Ruff Linting Check
+        run: ruff check ellar_django tests
       - name: mypy
         run: mypy ellar_django
