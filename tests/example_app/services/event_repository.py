@@ -9,11 +9,11 @@ from ..wsgi_django.db_models.models import Event
 
 @injectable
 class EventRepository(IEventRepository):
-    _dummy_data = dict(
-        title="TestEvent1Title",
-        start_date=str(datetime.now().date()),
-        end_date=str((datetime.now() + timedelta(days=5)).date()),
-    )
+    _dummy_data = {
+        "title": "TestEvent1Title",
+        "start_date": str(datetime.now().date()),
+        "end_date": str((datetime.now() + timedelta(days=5)).date()),
+    }
 
     def create_dummy_events(self):
         for i in range(3):

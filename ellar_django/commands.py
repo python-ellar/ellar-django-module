@@ -14,7 +14,7 @@ For example: ellar django 'migrate --help'
 
 @command(
     name="django",
-    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+    context_settings={"ignore_unknown_options": True, "allow_extra_args": True},
     help=HELP_MESSAGE,
 )
 def django_command_wrapper() -> None:
