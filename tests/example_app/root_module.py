@@ -23,7 +23,7 @@ from .interfaces.events_repository import IEventRepository
 class ApplicationModule(ModuleBase):
     @exception_handler(404)
     def exception_404_handler(cls, ctx: IExecutionContext, exc: Exception) -> Response:
-        return JSONResponse(dict(detail="Resource not found."))
+        return JSONResponse({"detail": "Resource not found."})
 
     def register_services(self, container: Container) -> None:
         from .services.event_repository import EventRepository
