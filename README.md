@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#" target="blank"><img src="https://eadwincode.github.io/ellar/img/EllarLogoB.png" width="200" alt="Ellar Logo" /></a>
+  <a href="#" target="blank"><img src="https://python-ellar.github.io/ellar/img/EllarLogoB.png" width="200" alt="Ellar Logo" /></a>
 </p>
 <p align="center">Ellar - Python ASGI web framework for building fast, efficient and scalable RESTful APIs and server-side application.</p>
 
