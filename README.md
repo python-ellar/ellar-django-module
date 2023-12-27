@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="#" target="blank"><img src="https://eadwincode.github.io/ellar/img/EllarLogoB.png" width="200" alt="Ellar Logo" /></a>
+  <a href="#" target="blank"><img src="https://python-ellar.github.io/ellar/img/EllarLogoB.png" width="200" alt="Ellar Logo" /></a>
 </p>
-<p align="center">Ellar - Python ASGI web framework for building fast, efficient and scalable RESTful APIs and server-side application.</p>
+<p align="center">Ellar - Python ASGI web framework for building fast, efficient, and scalable RESTful APIs and server-side applications.</p>
 
-![Test](https://github.com/eadwinCode/ellar-django-module/actions/workflows/test_full.yml/badge.svg)
-![Coverage](https://img.shields.io/codecov/c/github/eadwinCode/ellar-django-module)
+![Test](https://github.com/python-ellar/ellar-django-module/actions/workflows/test_full.yml/badge.svg)
+![Coverage](https://img.shields.io/codecov/c/github/python-ellar/ellar-django-module)
 [![PyPI version](https://badge.fury.io/py/ellar-django-module.svg)](https://badge.fury.io/py/ellar-django-module)
 [![PyPI version](https://img.shields.io/pypi/v/ellar-django-module.svg)](https://pypi.python.org/pypi/ellar-django-module)
 [![PyPI version](https://img.shields.io/pypi/pyversions/ellar-django-module.svg)](https://pypi.python.org/pypi/ellar-django-module)

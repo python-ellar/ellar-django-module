@@ -17,7 +17,7 @@ async def _redirect_route(req: Request) -> RedirectResponse:
     return RedirectResponse(url=str(req.base_url))
 
 
-@Module()
+@Module(commands=[django_command_wrapper])
 class DjangoModule(IModuleSetup):
     @classmethod
     def setup(cls, settings_module: str, path_prefix: str = "/dj") -> "DynamicModule":
@@ -27,4 +27,4 @@ class DjangoModule(IModuleSetup):
         mount = Mount(
             path_prefix, routes=[_router, Mount("/", app=get_asgi_application())]
         )
-        return DynamicModule(cls, routers=[mount], commands=[django_command_wrapper])
+        return DynamicModule(cls, routers=[mount])
