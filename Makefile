@@ -11,19 +11,19 @@ clean: ## Removing cached python compiled files
 	find . -name __pycache__  | xargs  rm -rfv
 
 install: ## Install dependencies
-	flit install --deps develop --symlink
+	pip install -r requirements.txt
+	flit install --symlink
 
 install-full: ## Install dependencies
 	make install
 	pre-commit install -f
 
 lint: ## Run code linters
-	black --check ellar_django tests
 	ruff check ellar_django tests
 	mypy ellar_django
 
 fmt format: ## Run code formatters
-	black ellar_django tests
+	ruff format ellar_django tests
 	ruff check --fix ellar_django tests
 
 test: ## Run tests

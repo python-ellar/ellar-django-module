@@ -2,10 +2,10 @@ import os
 
 from django.core.asgi import get_asgi_application
 from ellar.common import IModuleSetup, Module, ModuleRouter
-from ellar.common.routing import Mount
 from ellar.core import DynamicModule, Request
-from ellar.core.routing import ModuleRouterFactory
+from ellar.core.router_builders import ModuleRouterBuilder
 from starlette.responses import RedirectResponse
+from starlette.routing import Mount
 
 from .commands import django_command_wrapper
 
@@ -22,9 +22,13 @@ class DjangoModule(IModuleSetup):
     @classmethod
     def setup(cls, settings_module: str, path_prefix: str = "/dj") -> "DynamicModule":
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module)
-        ModuleRouterFactory.build(_router)
+        ModuleRouterBuilder.build(_router)
 
         mount = Mount(
-            path_prefix, routes=[_router, Mount("/", app=get_asgi_application())]
+            path_prefix,
+            routes=[
+                _router,  # type:ignore[list-item]
+                Mount("/", app=get_asgi_application()),
+            ],
         )
         return DynamicModule(cls, routers=[mount])
