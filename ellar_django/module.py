@@ -22,12 +22,12 @@ class DjangoModule(IModuleSetup):
     @classmethod
     def setup(cls, settings_module: str, path_prefix: str = "/dj") -> "DynamicModule":
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module)
-        ModuleRouterBuilder.build(_router)
+        _router_as_mount = ModuleRouterBuilder.build(_router)
 
         mount = Mount(
             path_prefix,
             routes=[
-                _router,  # type:ignore[list-item]
+                _router_as_mount,
                 Mount("/", app=get_asgi_application()),
             ],
         )
