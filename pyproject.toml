@@ -57,6 +57,7 @@ Documentation = "https://github.com/python-ellar/ellar-django-module"
 Source = "https://github.com/python-ellar/ellar-django-module"
 Homepage = "https://python-ellar.github.io/ellar-django-module/"
 
+
 [tool.ruff]
 select = [
     "E",  # pycodestyle errors
