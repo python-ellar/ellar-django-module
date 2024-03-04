@@ -8,6 +8,7 @@ from starlette.responses import RedirectResponse
 from starlette.routing import Mount
 
 from .commands import django_command_wrapper
+from .middleware import DjangoAdminRedirectMiddleware
 
 _router = ModuleRouter()
 
@@ -28,7 +29,12 @@ class DjangoModule(IModuleSetup):
             path_prefix,
             routes=[
                 _router_as_mount,
-                Mount("/", app=get_asgi_application()),
+                Mount(
+                    "/",
+                    app=DjangoAdminRedirectMiddleware(
+                        get_asgi_application(), path_prefix
+                    ),
+                ),
             ],
         )
         return DynamicModule(cls, routers=[mount])
