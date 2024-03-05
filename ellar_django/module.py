@@ -22,6 +22,11 @@ async def _redirect_route(req: Request) -> RedirectResponse:
 class DjangoModule(IModuleSetup):
     @classmethod
     def setup(cls, settings_module: str, path_prefix: str = "/dj") -> "DynamicModule":
+        assert path_prefix not in [
+            "",
+            "/",
+        ], "Invalid path prefix, please set a valid path prefix"
+
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module)
         _router_as_mount = ModuleRouterBuilder.build(_router)
 

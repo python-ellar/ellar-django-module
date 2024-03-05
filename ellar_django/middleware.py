@@ -10,7 +10,7 @@ class DjangoAdminRedirectMiddleware:
         self.path_prefix = path_prefix
 
     async def __call__(self, scope: TScope, receive: TReceive, send: TSend) -> t.Any:
-        if scope["type"] != "http":
+        if scope["type"] != "http":  # pragma: no cover
             return await self.app(scope, receive, send)
 
         async def sender(message: TMessage) -> None:

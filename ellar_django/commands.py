@@ -23,7 +23,7 @@ def django_command_wrapper() -> None:
     args = []
     skip = 1
 
-    if "manage.py" in sys.argv:
+    if "manage.py" in sys.argv:  # pragma: no cover
         skip = 2
 
     for item in sys.argv[skip:]:
