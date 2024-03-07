@@ -205,6 +205,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     ...
 ]
+WHITENOISE_STATIC_PREFIX = '/static/'
 ...
 ```
 So when you visit [http://localhost:8000/-django-example/admin](http://localhost:8000/-django-example/admin) again, the page should be functional.

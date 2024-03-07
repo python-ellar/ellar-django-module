@@ -7,7 +7,7 @@ from ellar.core.router_builders import ModuleRouterBuilder
 from starlette.responses import RedirectResponse
 from starlette.routing import Mount
 
-from .commands import django_command_wrapper
+from .commands import django_command
 from .middleware import DjangoAdminRedirectMiddleware
 
 _router = ModuleRouter()
@@ -18,7 +18,7 @@ async def _redirect_route(req: Request) -> RedirectResponse:
     return RedirectResponse(url=str(req.base_url))
 
 
-@Module(commands=[django_command_wrapper])
+@Module(commands=[django_command])
 class DjangoModule(IModuleSetup):
     @classmethod
     def setup(cls, settings_module: str, path_prefix: str = "/dj") -> "DynamicModule":
