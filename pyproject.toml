@@ -14,7 +14,7 @@ authors = [
 dynamic = ["version", "description"]
 requires-python = ">=3.8"
 readme = "README.md"
-home-page = "https://github.com/eadwinCode/ellar-django-module"
+home-page = "https://github.com/python-ellar/ellar-django-module"
 classifiers = [
     "Intended Audience :: Information Technology",
     "Intended Audience :: System Administrators",
@@ -47,31 +47,16 @@ classifiers = [
 ]
 
 dependencies = [
-    "ellar-cli >= 0.2.0",
-    "Django >= 3.0",
+    "ellar-cli >= 0.3.7",
+    "Django >= 3.1",
 ]
 
 
 [project.urls]
-Documentation = "https://github.com/eadwinCode/ellar-django-module"
-Source = "https://github.com/eadwinCode/ellar-django-module"
-Homepage = "https://eadwincode.github.io/ellar-django-module/"
+Documentation = "https://github.com/python-ellar/ellar-django-module"
+Source = "https://github.com/python-ellar/ellar-django-module"
+Homepage = "https://python-ellar.github.io/ellar-django-module/"
 
-[project.optional-dependencies]
-test = [
-    "pytest >= 7.1.3,< 9.0.0",
-    "pytest-django",
-    "pytest-cov >= 2.12.0,<5.0.0",
-    "mypy == 1.8.0",
-    "mypy == 1.7.1",
-    "ruff ==0.3.0",
-    "black == 24.2.0",
-    "pytest-asyncio",
-    "autoflake",
-]
-dev = [
-    "pre-commit"
-]
 
 [tool.ruff]
 select = [
