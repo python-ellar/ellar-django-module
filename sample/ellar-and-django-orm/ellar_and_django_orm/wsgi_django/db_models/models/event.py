@@ -10,5 +10,5 @@ class Event(models.Model):
     category = models.OneToOneField(
         Category, null=True, blank=True, on_delete=models.SET_NULL
     )
-    start_date = models.DateField(auto_now=True)
-    end_date = models.DateField(auto_now_add=True)
+    start_date = models.DateField()
+    end_date = models.DateField()

@@ -19,7 +19,7 @@ from datetime import date
 from ellar.common import Serializer
 
 
-class EventSchema(Serializer):
+class EventSchemaIn(Serializer):
     title: str
     start_date: date
     end_date: date
@@ -30,3 +30,6 @@ class EventSchema(Serializer):
 
 class EventSchemaOut(Serializer):
     id: int
+    title: str
+    start_date: date
+    end_date: date
