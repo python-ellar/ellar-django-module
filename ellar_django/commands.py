@@ -19,7 +19,8 @@ class _CommandItem(t.NamedTuple):
 def get_command_description(command_name: str) -> str:
     module = get_commands()[command_name]
     CommandClass = load_command_class(module, command_name)
-    return CommandClass.help or ""
+    CommandClass.help = f"[{module.split('.')[0]}] {CommandClass.help}"
+    return CommandClass.help
 
 
 def generate_command_list() -> t.List[_CommandItem]:
@@ -36,15 +37,20 @@ def generate_command_list() -> t.List[_CommandItem]:
 _django_support_commands = generate_command_list()
 
 
-def version_callback(ctx: click.Context, _: t.Any, value: bool) -> None:
+def version_callback(ctx: click.Context, _: click.Parameter, value: bool) -> None:
     if value:
         click.echo(f"Django Version: {django.__version__}")
         ctx.exit()
 
 
+def show_help_callback(ctx: click.Context, _: click.Parameter, value: bool) -> None:
+    command_args = ["manage.py", ctx.info_name, "--help"]
+    django.core.management.execute_from_command_line(command_args)
+
+
 @click.group(
     name="django",
-    help="- Ellar Django Commands",
+    help="Ellar Django Commands",
 )
 @click.option(
     "-v",
@@ -70,6 +76,7 @@ def _add_django_command(command_item: _CommandItem) -> None:
     @click.option(
         "-h",
         "--help",
+        callback=show_help_callback,
         help="Show the command help.",
         is_flag=True,
         expose_value=False,
