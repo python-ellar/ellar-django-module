@@ -1,3 +1,4 @@
+import click.testing
 import pytest
 from django.contrib.auth import get_user_model
 from ellar.testing import Test
@@ -22,3 +23,8 @@ def admin_user():
 def client():
     with test_module.get_test_client() as _client:
         yield _client
+
+
+@pytest.fixture
+def cli_runner():
+    return click.testing.CliRunner()
