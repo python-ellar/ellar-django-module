@@ -4,12 +4,6 @@ import django
 import ellar_cli.click as click
 from django.core.management import get_commands, load_command_class
 
-BLACKLISTED_COMMANDS: t.Final[t.Set[str]] = {
-    "runserver",
-    "startapp",
-    "startproject",
-}
-
 
 class _CommandItem(t.NamedTuple):
     name: str
@@ -23,18 +17,15 @@ def get_command_description(command_name: str) -> str:
     return CommandClass.help
 
 
-def generate_command_list() -> t.List[_CommandItem]:
+def _generate_command_list(
+    blacklist_commands: t.Set[str],
+) -> t.Generator[_CommandItem, None, None]:
     commands = get_commands()
-    command_list: t.List[_CommandItem] = []
     for command in commands:
-        if command in BLACKLISTED_COMMANDS:
+        if command in blacklist_commands:
             continue
         description = get_command_description(command)
-        command_list.append(_CommandItem(name=command, description=description))
-    return command_list
-
-
-_django_support_commands = generate_command_list()
+        yield _CommandItem(name=command, description=description)
 
 
 def version_callback(ctx: click.Context, _: click.Parameter, value: bool) -> None:
@@ -44,29 +35,14 @@ def version_callback(ctx: click.Context, _: click.Parameter, value: bool) -> Non
 
 
 def show_help_callback(ctx: click.Context, _: click.Parameter, value: bool) -> None:
-    command_args = ["manage.py", ctx.info_name, "--help"]
-    django.core.management.execute_from_command_line(command_args)
+    if value:
+        command_args = ["manage.py", ctx.info_name, "--help"]
+        django.core.management.execute_from_command_line(command_args)
 
 
-@click.group(
-    name="django",
-    help="Ellar Django Commands",
-)
-@click.option(
-    "-v",
-    "--version",
-    callback=version_callback,
-    help="Show the version and exit.",
-    is_flag=True,
-    expose_value=False,
-    is_eager=True,
-)
-@click.pass_context
-def django_command(ctx: click.Context) -> None:
-    pass
-
-
-def _add_django_command(command_item: _CommandItem) -> None:
+def _add_django_command(
+    django_command: click.Group, command_item: _CommandItem
+) -> None:
     @django_command.command(
         name=command_item.name,
         help=command_item.description,
@@ -90,4 +66,28 @@ def _add_django_command(command_item: _CommandItem) -> None:
         django.core.management.execute_from_command_line(command_args)
 
 
-list(map(_add_django_command, _django_support_commands))
+def get_django_command(blacklisted_commands: t.Set[str]) -> click.Group:
+    @click.group(
+        name="django",
+        help="Ellar Django Commands",
+    )
+    @click.option(
+        "-v",
+        "--version",
+        callback=version_callback,
+        help="Show the version and exit.",
+        is_flag=True,
+        expose_value=False,
+        is_eager=True,
+    )
+    @click.pass_context
+    def django_command(ctx: click.Context) -> None:
+        pass
+
+    for command_item in _generate_command_list(blacklisted_commands):
+        _add_django_command(
+            django_command=t.cast(click.Group, django_command),
+            command_item=command_item,
+        )
+
+    return t.cast(click.Group, django_command)
