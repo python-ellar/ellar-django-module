@@ -47,7 +47,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "ellar-cli >= 0.4.1",
+    "ellar-cli >= 0.4.3",
     "Django >= 3.1",
 ]
 
