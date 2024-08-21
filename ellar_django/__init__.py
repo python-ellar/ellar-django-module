@@ -1,6 +1,6 @@
 """Enables Django ORM and Admin feature in Ellar's application"""
 
-__version__ = "1.0.7"
+__version__ = "1.0.9"
 
 from .module import DjangoModule
 
